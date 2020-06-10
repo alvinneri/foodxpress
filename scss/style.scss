@@ -33,17 +33,11 @@ a {
   margin: 0 auto;
 }
 
-.d-flex {
-  display: flex;
-  justify-content: space-between;
-}
-
 .d-flex-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   height: 100%;
 }
 
@@ -55,6 +49,7 @@ a {
   font-size: 0.8rem;
   font-family: $fontMontserrat;
   letter-spacing: 0.1em;
+  border: none;
 }
 
 //Navigation
@@ -125,7 +120,24 @@ a {
 
 // Menu
 .container-menu {
+  margin: 1em 0;
   width: 100%;
   height: 100vh;
   background: $bodyColor;
+
+  .container-aside {
+    padding: 1em;
+    background: $fontColorLight;
+
+    input {
+      width: 80%;
+      background: whitesmoke;
+      font-family: $fontMontserrat;
+    }
+
+    p {
+      font-family: $fontOswald;
+      font-size: 1.3rem;
+    }
+  }
 }
