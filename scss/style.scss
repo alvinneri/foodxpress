@@ -63,6 +63,11 @@ a {
   letter-spacing: 0.1em;
 }
 
+.signup {
+  background: $buttonColor1;
+  border: 1px solid $buttonColor1;
+}
+
 .container-nav {
   position: fixed;
   width: 100%;

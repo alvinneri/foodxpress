@@ -8,7 +8,7 @@ import Nav from "./components/nav";
 import Hero from "./components/hero";
 import Search from "./components/search";
 import Login from "./components/login";
-
+import Signup from "./components/signup";
 const client = new ApolloClient({
   uri: "https://edamam.herokuapp.com/graphql",
 });
@@ -34,6 +34,7 @@ const App = () => {
           <Route exact path="/" component={Hero} />
           <Route exact path="/menu" component={Search} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
       </Router>
     </ApolloProvider>

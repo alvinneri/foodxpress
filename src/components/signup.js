@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -25,23 +25,13 @@ const Login = () => {
 
     let db = openDatabase("foodxpress", "1.0", "database", 2 * 1024 * 1024);
     db.transaction(function (tx) {
-      tx.executeSql(
-        `SELECT * FROM users WHERE username =?`,
-        [username],
-        function (t, data) {
-          if (data.rows.length > 0) {
-            if (password == data.rows[0].password) {
-              localStorage.setItem("session", username);
-              history.push("/menu");
-            } else {
-              setError("Invalid Password");
-            }
-          } else {
-            setError("Invalid Username");
-          }
-        }
-      );
+      tx.executeSql(`INSERT INTO users  (username,password) VALUES (?,?)`, [
+        username,
+        password,
+      ]);
     });
+
+    history.push("/menu");
   };
 
   return (
@@ -73,10 +63,10 @@ const Login = () => {
             value={password}
           />
         </div>
-        <button className="btn btn-light">Login</button>
+        <button className="btn btn-light">Signup</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
