@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import OrderItems from "./orderitem";
 
@@ -17,7 +18,7 @@ const Order = () => {
         [username1],
         function (t, data) {
           for (let i = 0; i < data.rows.length; i++) {
-            setOrders([...orders, data.rows[i]]);
+            setOrders((orders) => orders.concat(data.rows[i]));
           }
         }
       );
@@ -26,12 +27,25 @@ const Order = () => {
 
   return (
     <div
-      className="container d-flex justify-content-center align-items-center"
+      className="container d-flex flex-column justify-content-center align-items-center"
       style={{ height: "100vh" }}
     >
-      {orders.map((item) => (
-        <OrderItems key={item.id} item={item} />
-      ))}
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((item) => (
+            <OrderItems key={item.id} item={item} />
+          ))}
+        </tbody>
+        <Link to="/menu" className="btn btn-success my-2 float-left">
+          Go Back
+        </Link>
+      </table>
     </div>
   );
 };
