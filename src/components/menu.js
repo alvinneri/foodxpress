@@ -1,7 +1,8 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import Items from "./items";
+import { printIntrospectionSchema } from "graphql";
 
 const FOOD_QUERY = gql`
   query FoodQuery($q: String!) {
@@ -22,16 +23,17 @@ const FOOD_QUERY = gql`
 `;
 
 const Menu = ({ q }) => {
-  console.log({ q });
+  
+  let query = Object.values({ q }) != "" ? { q } : { q: "meat" };
 
   return (
     <Fragment>
-      <Query query={FOOD_QUERY} variables={{ q }}>
+      <Query query={FOOD_QUERY} variables={query}>
         {({ loading, error, data }) => {
           if (loading)
             return (
-              <div className="loadercenter">
-                <h1>Loading</h1>
+              <div className="d-flex-center">
+                <h5>Fetching Data</h5>
               </div>
             );
           if (error) console.log(error);
@@ -39,7 +41,7 @@ const Menu = ({ q }) => {
           let food = data.food.hits;
 
           return (
-            <div className="container">
+            <div className="container d-lg-flex flex-wrap justify-content-around">
               {food.map((foods) => (
                 <Items
                   key={foods.recipe.uri}

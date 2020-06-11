@@ -21,9 +21,6 @@ const App = () => {
         <Nav />
         <Hero />
         <Search />
-        <Switch>
-          <Route path="/search/:q" component={Menu} />
-        </Switch>
       </Router>
     </ApolloProvider>
   );

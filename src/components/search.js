@@ -20,23 +20,31 @@ const Search = () => {
   return (
     <div className="container-menu">
       <div className="margin row">
-        <div className="container-aside col-md-4">
-          <p>Find your order here!</p>
-          <form onSubmit={onSubmit}>
-            <div className="form-group">
-              <input
-                placeholder="Search"
-                autoComplete="off"
-                type="text"
-                name="name"
-                className="form-control"
-                onChange={handleChange}
-                value={q}
-              />
+        <div className="container-aside col-md-3">
+          <div className="card">
+            <div className="card-header">
+              <p>Find your order here!</p>
             </div>
-          </form>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <form onSubmit={onSubmit}>
+                  <input
+                    placeholder="Search"
+                    autoComplete="off"
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    onChange={handleChange}
+                    value={q}
+                  />
+                </form>
+              </li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
         </div>
-        <div className="container-content col-md-8 d-flex flex-wrap">
+        <div className="container-content col-md-9">
           <Menu q={value} />
         </div>
       </div>

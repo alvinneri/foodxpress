@@ -7,9 +7,11 @@ const Items = (props) => {
       <img src={image} alt="" className="card-img-top" />
       <div className="card-body">
         <div className="card-title">{label}</div>
-        <a href="" className="button2">
-          Order
-        </a>
+        <div className="card-content">
+          <a href="" className="btn btn-dark">
+            Order
+          </a>
+        </div>
       </div>
     </div>
   );

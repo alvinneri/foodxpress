@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="margin d-flex-center">
         <p>Fresh and Local</p>
         <h1>Fresh Food Everyday</h1>
-        <a href="#" className="button2">
+        <a href="#" className="btn btn-dark">
           view menu
         </a>
       </div>
