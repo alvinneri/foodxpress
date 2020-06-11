@@ -161,3 +161,24 @@ a {
     background: $buttonColor1;
   }
 }
+
+// Login form
+.container-login {
+  height: 100vh;
+  color: $bodyColor;
+  font-family: $fontMontserrat;
+
+  h3 {
+    font-weight: 700;
+  }
+  form {
+    width: 500px;
+    background: $fontColorDark;
+    padding: 2em 1em;
+    border-radius: 6px;
+  }
+}
+
+.alert {
+  color: tomato;
+}

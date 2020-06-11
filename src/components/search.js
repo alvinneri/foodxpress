@@ -19,7 +19,7 @@ const Search = () => {
 
   return (
     <div className="container-menu">
-      <div className="margin row">
+      <div className="margin row mt-5 pt-5">
         <div className="container-aside col-md-3">
           <div className="card">
             <div className="card-header">
@@ -39,8 +39,8 @@ const Search = () => {
                   />
                 </form>
               </li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li class="list-group-item">About</li>
+              <li class="list-group-item">Your Orders</li>
             </ul>
           </div>
         </div>
