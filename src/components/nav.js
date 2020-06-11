@@ -9,9 +9,13 @@ const Nav = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("session");
+    localStorage.removeItem("refresh");
     setStatus("logout");
     history.push("/");
   };
+
+  useEffect(() => {});
+
   useEffect(() => {
     if (localStorage.getItem("session")) {
       setStatus("login");

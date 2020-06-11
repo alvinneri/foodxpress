@@ -24,14 +24,31 @@ const Signup = () => {
     e.preventDefault();
 
     let db = openDatabase("foodxpress", "1.0", "database", 2 * 1024 * 1024);
-    db.transaction(function (tx) {
-      tx.executeSql(`INSERT INTO users  (username,password) VALUES (?,?)`, [
-        username,
-        password,
-      ]);
-    });
 
-    history.push("/menu");
+    db.transaction(function (tx) {
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS 'users' (id INTEGER PRIMARY KEY, username, password )"
+      );
+      tx.executeSql(
+        `SELECT * FROM users WHERE username =?`,
+        [username],
+        function (t, data) {
+          if (data.rows.length > 0) {
+            setError("Username not available");
+          } else {
+            db.transaction(function (tx) {
+              tx.executeSql(
+                `INSERT INTO users (username,password) VALUES (?,?)`,
+                [username, password]
+              );
+            });
+            localStorage.setItem("session", username);
+            localStorage.setItem("refresh", 1);
+            history.push("/menu");
+          }
+        }
+      );
+    });
   };
 
   return (

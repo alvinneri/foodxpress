@@ -23,8 +23,21 @@ const FOOD_QUERY = gql`
 `;
 
 const Menu = ({ q }) => {
-  
   let query = Object.values({ q }) != "" ? { q } : { q: "meat" };
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    let db = openDatabase("foodxpress", "1.0", "database", 2 * 1024 * 1024);
+    console.log(localStorage.getItem("refresh"));
+    if (localStorage.getItem("refresh") == 1) {
+      localStorage.setItem("refresh", 0);
+      window.location.reload();
+    } else {
+      if (localStorage.getItem("session")) {
+        setUsername(localStorage.getItem("session"));
+      }
+    }
+  }, []);
 
   return (
     <Fragment>
@@ -48,6 +61,7 @@ const Menu = ({ q }) => {
                   label={foods.recipe.label}
                   image={foods.recipe.image}
                   ingredients={foods.recipe.ingredients}
+                  username={username}
                 />
               ))}
             </div>
