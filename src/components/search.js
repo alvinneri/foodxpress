@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import Menu from "./menu";
 
@@ -40,7 +40,11 @@ const Search = () => {
                 </form>
               </li>
               <li class="list-group-item">About</li>
-              <li class="list-group-item">Your Orders</li>
+              <li class="list-group-item">
+                <Link to="order" className="order-link">
+                  Your Orders
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

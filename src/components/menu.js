@@ -28,7 +28,6 @@ const Menu = ({ q }) => {
 
   useEffect(() => {
     let db = openDatabase("foodxpress", "1.0", "database", 2 * 1024 * 1024);
-    console.log(localStorage.getItem("refresh"));
     if (localStorage.getItem("refresh") == 1) {
       localStorage.setItem("refresh", 0);
       window.location.reload();
@@ -50,7 +49,7 @@ const Menu = ({ q }) => {
               </div>
             );
           if (error) console.log(error);
-          console.log(data);
+
           let food = data.food.hits;
 
           return (
