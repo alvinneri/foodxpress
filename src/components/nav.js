@@ -50,11 +50,11 @@ const Nav = () => {
 
   return (
     <div className="container-nav">
-      <div className="margin d-md-flex justify-content-md-between">
+      <div className="margin d-sm-flex justify-content-sm-between align-items-center">
         <Link to="/" className="logo">
           foodxpress
         </Link>
-        <ul className="d-flex">{links}</ul>
+        <ul className="d-sm-flex text-center">{links}</ul>
       </div>
     </div>
   );
