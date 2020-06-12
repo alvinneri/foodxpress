@@ -30,6 +30,7 @@ const Menu = ({ q }) => {
     let db = openDatabase("foodxpress", "1.0", "database", 2 * 1024 * 1024);
     if (localStorage.getItem("refresh") == 1) {
       localStorage.setItem("refresh", 0);
+
       setTimeout(() => {
         window.location.reload();
       }, 1000);
