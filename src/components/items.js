@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Items = (props) => {
   const { label, image, ingredients, username } = props;
+  const [status, setStatus] = useState("Order");
 
   const handleOrder = (e) => {
     e.preventDefault();
@@ -20,6 +21,8 @@ const Items = (props) => {
         order,
       ]);
     });
+
+    setStatus("Done");
   };
   return (
     <div className="card">
@@ -28,7 +31,7 @@ const Items = (props) => {
         <div className="card-title">{label}</div>
         <div className="card-content">
           <button className="btn btn-dark" id={label} onClick={handleOrder}>
-            Order
+            {status}
           </button>
         </div>
       </div>

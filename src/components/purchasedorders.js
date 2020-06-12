@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import OrderItems from "./orderitem";
+import PurchaseOrderItems from "./purchasedOrderItems";
 
-const Order = () => {
+const PurchasedOrders = () => {
   const [username, setUsername] = useState("");
   const [orders, setOrders] = useState([]);
   const history = useHistory();
@@ -16,7 +16,7 @@ const Order = () => {
       let db = openDatabase("foodxpress", "1.0", "database", 2 * 1024 * 1024);
       db.transaction(function (tx) {
         tx.executeSql(
-          `SELECT * FROM orders WHERE username =?`,
+          `SELECT * FROM purchased WHERE username =?`,
           [username1],
           function (t, data) {
             for (let i = 0; i < data.rows.length; i++) {
@@ -30,32 +30,6 @@ const Order = () => {
     }
   }, []);
 
-  const handlePurchase = () => {
-    let db = openDatabase("foodxpress", "1.0", "database", 2 * 1024 * 1024);
-    db.transaction(function (tx) {
-      tx.executeSql(
-        `SELECT * FROM orders WHERE username =?`,
-        [username],
-        function (t, data) {
-          for (let i = 0; i < data.rows.length; i++) {
-            setOrders((orders) => orders.concat(data.rows[i]));
-          }
-        }
-      );
-      tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS 'purchased' ('id' INTEGER PRIMARY KEY, 'username', 'orders', 'status')"
-      );
-
-      orders.map((item) =>
-        tx.executeSql(
-          "INSERT INTO purchased (username, orders, status) VALUES  (?,?,?)",
-          [item.username, item.orders, "pending"]
-        )
-      );
-    });
-
-    history.push("/purchase");
-  };
   return (
     <div
       className="container d-flex flex-column justify-content-center align-items-center"
@@ -65,26 +39,20 @@ const Order = () => {
         <thead>
           <tr>
             <th scope="col">Item</th>
-            <th></th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
           {orders.map((item) => (
-            <OrderItems key={item.id} item={item} />
+            <PurchaseOrderItems key={item.id} item={item} />
           ))}
         </tbody>
         <Link to="/menu" className="btn btn-light my-2 float-left btn-sm ">
           Go Back
         </Link>
-        <button
-          onClick={handlePurchase}
-          className="btn btn-light my-2 float-left btn-sm btn-pur"
-        >
-          Purchase
-        </button>
       </table>
     </div>
   );
 };
 
-export default Order;
+export default PurchasedOrders;

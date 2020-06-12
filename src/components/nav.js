@@ -10,11 +10,10 @@ const Nav = () => {
     e.preventDefault();
     localStorage.removeItem("session");
     localStorage.removeItem("refresh");
+
     setStatus("logout");
     history.push("/");
   };
-
-  useEffect(() => {});
 
   useEffect(() => {
     if (localStorage.getItem("session")) {
@@ -52,7 +51,9 @@ const Nav = () => {
   return (
     <div className="container-nav">
       <div className="margin d-md-flex justify-content-md-between">
-        <div className="logo">foodxpress</div>
+        <Link to="/" className="logo">
+          foodxpress
+        </Link>
         <ul className="d-flex">{links}</ul>
       </div>
     </div>

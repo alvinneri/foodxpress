@@ -56,6 +56,10 @@ a {
   border: none;
 }
 
+.btn-pur {
+  background: $buttonColor1;
+}
+
 //Navigation
 .logo {
   font-size: 1.5rem;
@@ -186,4 +190,30 @@ a {
 
 .alert {
   color: tomato;
+}
+
+// Order
+.table {
+  font-family: $fontOswald;
+}
+
+.hide {
+  display: none;
+}
+
+// Purchase
+.purchase {
+  font-family: $fontMontserrat;
+}
+
+// About {
+.about {
+  a {
+    font-weight: 700;
+    color: $buttonColor1;
+  }
+
+  .btn-pur {
+    color: $fontColorDark;
+  }
 }
