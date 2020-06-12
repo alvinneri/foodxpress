@@ -32,7 +32,7 @@ const Menu = ({ q }) => {
       localStorage.setItem("refresh", 0);
       setTimeout(() => {
         window.location.reload();
-      }, 1);
+      }, 1000);
     } else {
       if (localStorage.getItem("session")) {
         setUsername(localStorage.getItem("session"));
